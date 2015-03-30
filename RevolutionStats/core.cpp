@@ -65,7 +65,6 @@ bool Core::PokeLoad()
 
 	string line;
 	unsigned int i = 1;
-	getline(pokes, line);
 	while (!pokes.eof())
 	{
 		getline(pokes, line, '\n');
@@ -87,7 +86,6 @@ bool Core::StatLoad()
 		return false;
 
 	string line;
-	getline(stats, line);
 	while (!stats.eof())
 	{
 		getline(stats, line, '\n');
@@ -127,7 +125,7 @@ bool Core::Input() {
 	
 	if (ConLock.try_lock())
 	{
-		if (InPokes != "N/A" && InPokes != "exit")
+		if (InPokes != "N/A" && InPokes != "exit" && InPokes != "new")
 		{
 			vector<string> pokes;
 			pokes.reserve(6);
@@ -135,11 +133,17 @@ bool Core::Input() {
 
 			for (int i = 0; i < pokes.size() / 2; i++)
 			{
-				Match.redPokes[i].assign(pokes[2 * i + 1]);
-				Match.bluePokes[i].assign(pokes[2 * i]);
-
 				unsigned int redPoke = NameToNum(pokes[2 * i + 1]);
 				unsigned int bluePoke = NameToNum(pokes[2 * i]);
+
+				if (redPoke != 0)
+					Match.redPokes[i].assign(pokes[2 * i + 1]);
+				else
+					Match.redPokes[i].assign("ERROR");
+				if (bluePoke != 0)
+					Match.bluePokes[i].assign(pokes[2 * i]);
+				else
+					Match.bluePokes[i].assign("ERROR");
 
 				for (int j = 0; j < 6; j++)
 				{
@@ -154,6 +158,19 @@ bool Core::Input() {
 		{
 			ConLock.unlock();
 			return false;
+		}
+		else if (InPokes == "new")
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				Match.redPokes[i] = "";
+				Match.bluePokes[i] = "";
+				for (int j = 0; j < 6; j++)
+				{
+					Match.redStats[i][j] = 0;
+					Match.blueStats[i][j] = 0;
+				}
+			}
 		}
 		ConLock.unlock();
 

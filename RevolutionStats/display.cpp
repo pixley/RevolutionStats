@@ -97,7 +97,7 @@ void Display::Draw()
 		//right-justification going on here
 		float blueNameWid = textObj.getLocalBounds().width;
 		textObj.setPosition(15 + (11 * 18 - blueNameWid), 68 + 42 * (i + 1));
-		textObj.setColor(Color::Blue);
+		textObj.setColor(Color(75, 75, 255, 255));
 		Win.draw(textObj);
 
 		//draw the red team Pokemon's name

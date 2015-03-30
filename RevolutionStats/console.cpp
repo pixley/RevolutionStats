@@ -60,12 +60,12 @@ void Con::Input(string& inPokes)
 
 		ConLock.unlock();
 
-		Sleep(1000);
+		Sleep(500);
 
 		ConLock.lock();
 
-		cout << "Stats are now being displayed on the display window." << endl;
-		cout << "Type \"new\" to start the next match, or type \"exit\" to end your session." << endl;
+		cout << endl << "Stats are now being displayed on the display window." << endl;
+		cout << "Type \"new\" to start the next match, or type \"exit\" to end your session." << endl << ">";
 
 		cin >> buf;
 
@@ -75,5 +75,9 @@ void Con::Input(string& inPokes)
 			inPokes = buf;
 			break;
 		}
+		inPokes = "new";
+		cout << endl << endl;
+		Sleep(500);
+		
 	}
 }
