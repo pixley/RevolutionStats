@@ -20,4 +20,6 @@ User control of RevolutionStats is not through the stat display window, but the 
 
 You can find Pixley Commentates Twitch, the show for which RevolutionStats was developed, on [my Twitch channel](http://twitch.tv/pixley).
 
+If you wish to use RevolutionStats, you can download it from this very repo.  It's Release.zip in the root directory, or you can download it using [this link](https://github.com/pixley/RevolutionStats/blob/master/Release.zip?raw=true).
+
 RevolutionStats was built using SFML, a multimedia library which can be found at http://sfml-dev.org. SFML is the copyright of Laurent Gomila.
