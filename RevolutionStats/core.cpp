@@ -105,6 +105,7 @@ unsigned int Core::NameToNum(string species)
 
 __declspec(noinline) bool Core::Init()
 {
+	SetForegroundWindow(GetConsoleWindow());
 	bool load = PokeLoad() && StatLoad();
 	return load;
 }
